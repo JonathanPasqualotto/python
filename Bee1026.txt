@@ -1,0 +1,122 @@
+#Entrada de dados e conversão
+
+#Entrada de valores
+num1, num2 = input().split()
+num1, num2 = int(num1), int(num2)
+numAlfa, numBeta = input().split()
+numAlfa, numBeta = int(numAlfa), int(numBeta)
+
+#Conversão em binário
+num1 = format(num1, 'b')
+num2 = format(num2, 'b')
+numAlfa = format(numAlfa, 'b')
+numBeta = format(numBeta, 'b')
+
+#Adiciona nas listas
+lst = [int(a) for a in str(num1)]
+lst2 = [int(a) for a in str(num2)]
+lst3 = []
+lstAlfa = [int(a) for a in str(numAlfa)]
+lstBeta = [int(a) for a in str(numBeta)]
+lstGama = []
+Dif = 0
+Dif2 = 0
+
+#ContadoresPrimeirosNumeros
+contador = len(lst)
+contador2 = len(lst2)
+contadorf = 0
+comparador = 0
+numf = ''
+
+#ContadoresSegundosNumeros
+contadorTeta = len(lstAlfa)
+contadorOmega = len(lstBeta)
+contadorLambda = 0
+comparador2 = 0
+numf2 = ''
+
+#Define o valor do contador para o preenchimento dos PRIMEIROS nums lá em baixo
+if contador > contador2:
+    contadorf = contador
+else:
+    contadorf = contador2
+
+#Define o valor do contador para o preenchimento dos SEGUNDOS nums lá em baixo
+if contadorTeta > contadorOmega:
+    contadorLambda = contadorTeta
+else:
+    contadorLambda = contadorOmega
+    
+#Iguala a quantidade de indices nas listas LST e LST2
+tamanhoA = len(lst)
+tamanhoB = len(lst2)
+if tamanhoA > tamanhoB:
+    Dif = tamanhoA - tamanhoB
+    for x in range(Dif):
+        lst2.insert(0, 0)
+elif tamanhoA < tamanhoB: 
+    Dif = tamanhoB - tamanhoA
+    for x in range(Dif):
+        lst.insert(0, 0)
+
+#Iguala a quantidade de indices nas listas LST_ALFA e LST_BETA
+tamanhoAlfa = len(lstAlfa)
+tamanhoBeta = len(lstBeta)
+if tamanhoAlfa > tamanhoBeta:
+    Dif2 = tamanhoAlfa - tamanhoBeta
+    for x in range(Dif2):
+        lstBeta.insert(0, 0)
+elif tamanhoAlfa < tamanhoBeta: 
+    Dif2 = tamanhoBeta - tamanhoAlfa
+    for x in range(Dif2):
+        lstAlfa.insert(0, 0)
+
+#Efetua o calculor "Moriz" para os PRIMEIROS nums
+while comparador >= 0 and comparador < contadorf:
+    
+    if lst[comparador] == 1 and lst2[comparador] == 1:
+        lst3.append(0)
+    elif lst[comparador] == 0 and lst2[comparador] == 0:
+        lst3.append(0)
+    elif lst[comparador] == 1 and lst2[comparador] == 0:
+        lst3.append(1)
+    elif lst[comparador] == 0 and lst2[comparador] == 1:
+        lst3.append(1)
+        
+    comparador = comparador + 1
+    
+#Efetua o calculor "Moriz" para os SEGUNDOS nums
+while comparador2 >= 0 and comparador2 < contadorLambda:
+    
+    if lstAlfa[comparador2] == 1 and lstBeta[comparador2] == 1:
+        lstGama.append(0)
+    elif lstAlfa[comparador2] == 0 and lstBeta[comparador2] == 0:
+        lstGama.append(0)
+    elif lstAlfa[comparador2] == 1 and lstBeta[comparador2] == 0:
+        lstGama.append(1)
+    elif lstAlfa[comparador2] == 0 and lstBeta[comparador2] == 1:
+        lstGama.append(1)
+        
+    comparador2 = comparador2 + 1
+
+#Converte a lista final em string
+lst3 = list(map(str, lst3))
+lstGama = list(map(str, lstGama))
+
+#Transforma os itens da lista em uma unica palavra
+contador4 = 0
+contadorFin = 0
+for x in lst3:
+    numf = numf + lst3[contador4]
+    contador4 = contador4 + 1
+
+for x in lstGama:
+    numf2 = numf2 + lstGama[contadorFin]
+    contadorFin = contadorFin + 1
+
+#Converte a palavra para um numero e printa
+numf = round(int(numf,2))
+numf2 = round(int(numf2,2))
+print(numf)
+print(numf2)
