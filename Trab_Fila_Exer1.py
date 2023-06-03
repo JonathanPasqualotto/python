@@ -1,0 +1,85 @@
+import os
+import time
+
+tam = 5
+
+class ClasseFila:
+    def __init__(self):
+        self.inicio = -1
+        self.fim = -1
+        self.fila = [0]*tam
+    
+    def FilaVazia(self):
+        return self.inicio == -1 and self.fim == -1
+
+    def FilaCheia(self):
+        if self.fim + 1 == tam and self.inicio == 0:
+            return True
+        elif self.fim + 1 == self.inicio:
+            return True
+        else:
+            return False
+    
+    def ENQUEUE(self,Valor):
+        if self.FilaVazia():
+            self.inicio += 1
+            self.fim += 1
+        else:
+            self.fim += 1
+            if self.fim == tam and self.inicio != 0:
+                self.fim = 0
+        self.fila[self.fim] = Valor
+
+    def DEQUEUE(self):
+        Valor = self.fila[self.inicio]
+        if self.inicio == self.fim:
+            self.inicio = -1
+            self.fim = -1
+        else:
+            self.inicio += 1
+            if self.inicio == tam and self.fim >= 0:
+                self.inicio = 0
+        return Valor
+
+    def getINI(self):
+        return self.inicio
+
+    def getFIM(self):
+        return self.fim
+
+    def exibirLista(self):
+        aux = self.inicio
+        aux2 = self.fim
+        while not self.FilaVazia():
+            Valor = self.DEQUEUE()
+            print('Valor %d retirado da fila\nInicio = %d\nFim = %d.'%(Valor,self.inicio,self.fim))
+        self.inicio = aux
+        self.fim = aux2
+
+fila = ClasseFila()
+while True:
+    os.system('clear')
+    print('''
+    1 - Inserir um elemento na fila
+    2 - Retirar um elemento da fila
+    3 - Visualizar Fila
+    0 - Sair''')
+    opcao = int(input())
+    if opcao == 1:
+        os.system('clear')
+        valor = int(input('Digite um valor a ser inserido: '))
+        fila.ENQUEUE(valor)
+
+    elif opcao == 2:
+        os.system('clear')
+        fila.DEQUEUE()
+    
+    elif opcao == 3:
+        os.system('clear')
+        fila.exibirLista()
+        time.sleep(3)
+    
+    elif opcao == 0:
+        exit()
+    
+    input('Precisone uma telca para voltar...')

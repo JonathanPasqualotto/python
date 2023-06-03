@@ -1,0 +1,18 @@
+import random
+import numpy as np
+x = np.random.randint(1,60, (1,6))
+y = np.random.randint(1,60, (1,6))
+t = np.random.randint(1,60, (1,6))
+u = np.random.randint(1,60, (1,6))
+s = np.random.randint(1,60, (1,6))
+h = np.random.randint(1,60, (1,6))
+w = np.random.randint(1,60, (1,6))
+b = np.random.randint(1,60, (1,6))
+print(x)
+print(y)
+print(t)
+print(u)
+print(s)
+print(h)
+print(w)
+print(b)
